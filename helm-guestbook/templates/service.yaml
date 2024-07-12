@@ -9,12 +9,11 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   # type: {{ .Values.service.type }}
-  type: NodePort
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8080
-      nodePort: 30080
   selector:
     app: {{ template "helm-guestbook.name" . }}
     release: {{ .Release.Name }}
