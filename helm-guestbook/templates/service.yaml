@@ -8,13 +8,12 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  # type: {{ .Values.service.type }}
-  type: NodePort
+  type: {{ .Values.service.type }}
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
-      nodePort: 30080
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
   selector:
     app: {{ template "helm-guestbook.name" . }}
     release: {{ .Release.Name }}
