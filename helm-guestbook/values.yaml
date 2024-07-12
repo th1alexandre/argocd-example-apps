@@ -52,4 +52,4 @@ affinity:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - kubernetes-worker-0
+          - kubernetes-worker-1
